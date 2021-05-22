@@ -1,0 +1,208 @@
+<!Doctype html>
+<html lang="en">
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <!-- Favicon -->
+      <link href="/img/favicon.ico" rel="icon">
+
+      <!-- Google Fonts -->
+      <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400|Source+Code+Pro:700,900&display=swap" rel="stylesheet">
+
+      <!-- CSS Libraries -->
+      <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+      <link href="/lib/slick/slick.css" rel="stylesheet">
+      <link href="/lib/slick/slick-theme.css" rel="stylesheet">
+
+      <!-- Template Stylesheet -->
+      <link href="/css/style.css" rel="stylesheet">
+
+    <title>Head</title>
+  </head>
+  <body>
+    <%- include('./_layout/header') %>
+    <div class="breadcrumb-wrap">
+            <div class="container-fluid">
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/home/">Home</a></li>
+                    <li class="breadcrumb-item"><a href="/products/">Products</a></li>
+                    <li class="breadcrumb-item active">Product Detail</li>
+                </ul>
+            </div>
+        </div>
+
+    <div class="product-detail">
+          <div class="container-fluid">
+              <div class="row">
+                  <div class="col-md-10">
+                      <div class="product-detail-top">
+                          <div class="row align-items-center">
+                              <div class="col-md-5">
+                                  <div class="product-slider-single normal-slider">
+                                    <% if( galleryImages==null){ %>
+                                      <span> No Image </span>
+                                      <% }else{ %>
+                                        <% galleryImages.forEach(function(i){ %>
+           <% if (i != "thumbs") { %>
+              <img src="/product-images/<%= p.title %>/gallery/<%= i %>" style="width:200px; height:400px;border-radius:10px; " alt="Product Image">
+           <% } %>
+           <% });} %>
+                                  </div>
+                                  <div class="product-slider-single-nav normal-slider">
+                                    <% if( galleryImages==null){ %>
+                                      <span> No Image </span>
+                                      <% }else{ %>
+                                        <% galleryImages.forEach(function(i){ %>
+           <% if (i != "thumbs") { %>
+            <div class="slider-nav-img">  <img src="/product-images/<%= p.title %>/gallery/thumbs/<%= i %>" alt="Product Image"></div>
+           <% } %>
+           <% });} %>
+                                  </div>
+                              </div>
+                                <div class="col-md-1">
+                                </div>
+                              <div class="col-md-6">
+                                  <div class="product-content" style=" position:relative;top: -35px;">
+                                      <div class="title"><h2 style = "text-transform:uppercase;"><%= p.title %></h2></div>
+                                      <div class="ratting">
+                                          <i class="fa fa-star"></i>
+                                          <i class="fa fa-star"></i>
+                                          <i class="fa fa-star"></i>
+                                          <i class="fa fa-star"></i>
+                                          <i class="fa fa-star-half"></i>
+                                      </div>
+                                      <div class="price">
+                                          <h4>Price:</h4>
+                                          <p>&#8377; <%= p.price %></p>
+                                      </div>
+                                      <div class="price">
+                                          <h4>Category:</h4>
+                                          <h4 style = "text-transform:uppercase;"><%= p.category %></h4>
+                                      </div>
+                                      <div class="quantity">
+                                          <h4>Quantity:</h4>
+                                          <div class="qty">
+                                              <input type="text" value="1">
+                                          </div>
+                                      </div>
+                                      <div class="action">
+                                          <a class="btn" href="/cart/<%= p.title %>"><i class="fa fa-shopping-cart"></i>Add to Cart</a>
+                                          <a class="btn" href="/cart/buy/<%= p.title %>"><i class="fa fa-shopping-bag"></i>Buy Now</a>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+
+                      <div class="row product-detail-bottom">
+                          <div class="col-md-12">
+                              <ul class="nav nav-pills nav-justified">
+                                  <li class="nav-item">
+                                      <a class="nav-link active" data-toggle="pill" href="#description">Description</a>
+                                  </li>
+                                  <li class="nav-item">
+                                      <a class="nav-link" data-toggle="pill" href="#reviews">Reviews</a>
+                                  </li>
+                              </ul>
+
+                              <div class="tab-content">
+                                  <div id="description" class="container tab-pane active">
+                                      <h4>Product description</h4>
+                                      <p>
+                                        <%= p.desc %>
+                                      </p>
+                                  </div>
+                                  <div id="reviews" class="container tab-pane fade">
+                                      <div class="reviews-submit">
+                                          <h4>Give your Review:</h4>
+                                          <form class="rating">
+  <label>
+    <input type="radio" name="stars" value="1" />
+    <span class="icon">★</span>
+  </label>
+  <label>
+    <input type="radio" name="stars" value="2" />
+    <span class="icon">★</span>
+    <span class="icon">★</span>
+  </label>
+  <label>
+    <input type="radio" name="stars" value="3" />
+    <span class="icon">★</span>
+    <span class="icon">★</span>
+    <span class="icon">★</span>
+  </label>
+  <label>
+    <input type="radio" name="stars" value="4" />
+    <span class="icon">★</span>
+    <span class="icon">★</span>
+    <span class="icon">★</span>
+    <span class="icon">★</span>
+  </label>
+  <label>
+    <input type="radio" name="stars" value="5" />
+    <span class="icon">★</span>
+    <span class="icon">★</span>
+    <span class="icon">★</span>
+    <span class="icon">★</span>
+    <span class="icon">★</span>
+  </label>
+</form>
+                                          <div class="row form">
+                                              <div class="col-sm-6">
+                                                  <input type="text" placeholder="Name">
+                                              </div>
+                                              <div class="col-sm-6">
+                                                  <input type="email" placeholder="Email">
+                                              </div>
+                                              <div class="col-sm-12">
+                                                  <textarea placeholder="Review"></textarea>
+                                              </div>
+                                              <div class="col-sm-12">
+                                                <button onclick="location.href='/products/'">Submit</button>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                    </div>
+                    <div class="col-md-2 sidebar">
+                      <a href="/products">
+                        <div class="sidebar-widget category">
+                        <h2 class="title" style="font-size:15px;">Browse more Products</h2>
+                        <nav class="navbar bg-light">
+                            <i class="fa fa-shopping-cart" style="margin-left:35px"></i>
+                                </nav>
+                        </div>
+                      </a>
+                        <br>
+                        <a href="/cart">
+                        <div class="sidebar-widget category">
+                        <h2 class="title" style="font-size:15px;padding-top:10px">Your Cart</h2>
+                        <nav class="navbar bg-light">
+                            <i class="fa fa-shopping-bag" style="margin-left:35px"></i>
+                                </nav>
+                        </div>
+                      </a>
+                    </div>
+                    </div>
+                    </div>
+                    </div>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script>
+    $(':radio').change(function() {
+  console.log('New star rating: ' + this.value);
+});
+</script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+  <script src="/lib/easing/easing.min.js"></script>
+  <script src="/lib/slick/slick.min.js"></script>
+  <!-- Template Javascript -->
+  <script src="/js/main.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+  </body>
+</html>

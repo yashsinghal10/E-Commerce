@@ -1,0 +1,116 @@
+<!Doctype html>
+<html lang="en">
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <!-- Favicon -->
+      <link href="/img/favicon.ico" rel="icon">
+
+      <!-- Google Fonts -->
+      <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400|Source+Code+Pro:700,900&display=swap" rel="stylesheet">
+
+      <!-- CSS Libraries -->
+      <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+      <link href="/lib/slick/slick.css" rel="stylesheet">
+      <link href="/lib/slick/slick-theme.css" rel="stylesheet">
+
+      <!-- Template Stylesheet -->
+      <link href="/css/style.css" rel="stylesheet">
+
+    <title>Head</title>
+  </head>
+  <body>
+    <%- include('./_layout/header') %>
+
+<div class="product-view">
+          <div class="container-fluid">
+              <div class="row">
+                <!-- Side Bar Start -->
+                <div class="col-md-3 sidebar">
+                    <div class="sidebar-widget category">
+                      <h2 class="title">Category</h2>
+                      <nav class="navbar bg-light">
+                          <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link" href="/products/"><i class="fas fa-arrow-right"></i></i>All Products</a>
+                            </li>
+                            <% categories.forEach(function(c){ %>
+                              <li class="nav-item">
+                                  <a class="nav-link" href="/products/<%= c.title %>"><i class="fas fa-arrow-right"></i><%= c.title %></a>
+                              </li>
+                              <% }) %>
+                          </ul>
+                      </nav>
+                    </div>
+                </div>
+                <!-- Side Bar End -->
+
+                  <div class="col-md-8">
+                      <div class="row">
+                          <div class="col-md-12">
+                              <div class="product-view-top">
+                                  <div class="row">
+                                    <div class="col-md-4">
+                                      <h3 class="title"><%= cat %></h3>
+                                    </div>
+                                      <div class="col-md-4">
+                                          <div class="product-search">
+                                              <input type="email" value="Search">
+                                              <button><i class="fa fa-search"></i></button>
+                                          </div>
+                                      </div>
+                                      <div class="col-md-4">
+                                          <div class="product-short">
+                                              <div class="dropdown">
+                                                  <div class="dropdown-toggle" data-toggle="dropdown">Product sort by</div>
+                                                  <div class="dropdown-menu dropdown-menu-right">
+                                                      <a href="#" class="dropdown-item">Price : High to Low</a>
+                                                      <a href="#" class="dropdown-item">Price : Low to High</a>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+
+                          <% products.forEach(function(p){ %>
+                          <div class="col-md-4">
+                               <div class="product-item">
+                                   <div class="product-title">
+                                       <a href="/products/<%= p.title %>/<%= p.category %>/"><span style = "text-transform:uppercase;"><%= p.title %></span></a>
+                                   </div>
+                                   <div class="product-image">
+                                       <a href="product-detail.html">
+                                           <img src="/product-images/<%= p.title %>/<%= p.image %>" width="400" height="250" alt="No Image">
+                                       </a>
+                                       <div class="product-action">
+                                           <a href="/cart/<%= p.title %>"><i class="fa fa-cart-plus"></i></a>
+                                           <a href="/products/<%= p.title %>/<%= p.category %>/"><i class="fa fa-search"></i></a>
+                                       </div>
+                                   </div>
+                                   <div class="product-price">
+                                       <h3 style = "font-size: 25px;"><span>&#8377; </span><%= p.price %></h3>
+                                       <a class="btn" href="/cart/buy/<%= p.title %>/"><i class="fa fa-shopping-cart"></i>Buy Now</a>
+                                   </div>
+                               </div>
+
+                           </div>
+                           <% }) %>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+  <script src="/lib/easing/easing.min.js"></script>
+  <script src="/lib/slick/slick.min.js"></script>
+  <!-- Template Javascript -->
+  <script src="/js/main.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+  </body>
+</html>

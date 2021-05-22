@@ -1,0 +1,73 @@
+<!-- Top bar Start -->
+      <div class="top-bar">
+          <div class="container-fluid">
+              <div class="row">
+                  <div class="col-sm-6">
+                      <i class="fa fa-envelope"></i>
+                      <a href="mailto:singhalanuja75@gmail.com">singhalanuja75@gmail.com</a>
+                  </div>
+                  <div class="col-sm-6">
+                      <i class="fa fa-phone-alt"></i>
+                      <a href="tel:7891844477">7891844477</a>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <!-- Top bar End -->
+
+      <!-- Bottom Bar End -->
+
+      <!-- Nav Bar Start -->
+      <div class="nav">
+          <div class="container-fluid">
+              <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+                  <a href="#" class="navbar-brand">MENU</a>
+                  <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                      <span class="navbar-toggler-icon"></span>
+                  </button>
+
+                  <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                      <div class="navbar-nav mr-auto">
+                        <% pages.forEach(function(page){ %>
+                        <% if(page.title== 'Your-Cart'){ %>
+                          <a href="/cart/" class="nav-item nav-link hover"><%= page.title %></a>
+                        <% }else{ %>
+                          <a href="/<%= page.title %>/" class="nav-item nav-link hover"><%= page.title %></a>
+                          <% }}) %>
+                      </div>
+                  </div>
+
+              </nav>
+          </div>
+      </div>
+      <!-- Nav Bar End -->
+      <div class="bottom-bar">
+          <div class="container-fluid">
+              <div class="row align-items-center">
+                  <div class="col-md-7">
+                      <div class="logo">
+                          <a href="index.html">
+                              <img src="/images/logo.png" alt="Logo">
+                          </a>
+                      </div>
+                  </div>
+                  <div class="col-md-3">
+                      <div class="user">
+                          <a href="/cart/" class="btn cart">
+                               <i class="fa fa-shopping-bag"></i>
+                                <span>(.)</span>
+                          </a>
+                      </div>
+                      </div>
+                      <div class="col-md-2">
+                        <% if(user) { %>
+                          Hi <%= user.displayName %>
+                          <% }else{ %>
+                          <div class="dropdown">
+                              <a href="/user/register_login" >Login/Register</a>
+                          </div>
+                          <% } %>
+                  </div>
+              </div>
+          </div>
+      </div>
